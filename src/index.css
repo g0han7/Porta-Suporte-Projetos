@@ -2,101 +2,253 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 210 40% 98%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 98%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 76% 36%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142 76% 36%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
   body {
+    @apply bg-background text-foreground;
     font-family: 'Poppins', sans-serif;
   }
 }
 
 @layer components {
-  /* Aroma GC Glass Effects */
+  /* Typography System */
+  .typography-xtitle {
+    @apply text-4xl font-extrabold leading-tight tracking-tight;
+  }
+  
+  .typography-title {
+    @apply text-3xl font-extrabold leading-tight tracking-tight;
+  }
+  
+  .typography-subtitle {
+    @apply text-2xl font-extrabold leading-tight tracking-tight;
+  }
+  
+  .typography-xtext {
+    @apply text-lg font-medium leading-relaxed;
+  }
+  
+  .typography-text {
+    @apply text-base font-normal leading-relaxed;
+  }
+  
+  .typography-subtext {
+    @apply text-sm font-normal leading-relaxed;
+  }
+  
+  .typography-stext {
+    @apply text-xs font-normal leading-relaxed;
+  }
+
+  /* Modern Card System */
+  .modern-card {
+    @apply rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .modern-card-header {
+    @apply flex flex-col space-y-1.5 p-6;
+  }
+
+  .modern-card-title {
+    @apply font-semibold leading-none tracking-tight;
+  }
+
+  .modern-card-description {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .modern-card-content {
+    @apply p-6 pt-0;
+  }
+
+  .modern-card-footer {
+    @apply flex items-center p-6 pt-0;
+  }
+
+  /* Modern Button System */
+  .btn-modern {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-modern-primary {
+    @apply btn-modern bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2;
+  }
+
+  .btn-modern-secondary {
+    @apply btn-modern bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2;
+  }
+
+  .btn-modern-outline {
+    @apply btn-modern border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2;
+  }
+
+  .btn-modern-ghost {
+    @apply btn-modern hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2;
+  }
+
+  .btn-modern-destructive {
+    @apply btn-modern bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 h-9 px-4 py-2;
+  }
+
+  /* Modern Badge System */
+  .badge-modern {
+    @apply inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  .badge-modern-default {
+    @apply badge-modern border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80;
+  }
+
+  .badge-modern-secondary {
+    @apply badge-modern border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .badge-modern-destructive {
+    @apply badge-modern border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80;
+  }
+
+  .badge-modern-outline {
+    @apply badge-modern text-foreground;
+  }
+
+  /* Modern Input System */
+  .input-modern {
+    @apply flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .input-modern-lg {
+    @apply input-modern h-10 px-4 py-2;
+  }
+
+  /* Status Colors */
+  .status-pending {
+    @apply bg-yellow-100 text-yellow-800 border-yellow-200;
+  }
+
+  .status-in-progress {
+    @apply bg-blue-100 text-blue-800 border-blue-200;
+  }
+
+  .status-resolved {
+    @apply bg-green-100 text-green-800 border-green-200;
+  }
+
+  .status-waiting {
+    @apply bg-orange-100 text-orange-800 border-orange-200;
+  }
+
+  .status-finished {
+    @apply bg-gray-100 text-gray-800 border-gray-200;
+  }
+
+  .status-cancelled {
+    @apply bg-red-100 text-red-800 border-red-200;
+  }
+
+  /* Priority Colors */
+  .priority-critical {
+    @apply bg-red-100 text-red-800 border-red-200;
+  }
+
+  .priority-high {
+    @apply bg-orange-100 text-orange-800 border-orange-200;
+  }
+
+  .priority-medium {
+    @apply bg-yellow-100 text-yellow-800 border-yellow-200;
+  }
+
+  .priority-low {
+    @apply bg-green-100 text-green-800 border-green-200;
+  }
+
+  .priority-very-low {
+    @apply bg-blue-100 text-blue-800 border-blue-200;
+  }
+
+  /* Glass Effects */
   .glass-effect {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-glass;
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-lg;
   }
   
   .glass-dark {
-    @apply bg-neutral-900/80 backdrop-blur-md border border-neutral-700/20 shadow-glass;
+    @apply bg-gray-900/80 backdrop-blur-md border border-gray-700/20 shadow-lg;
   }
 
-  .glass-card {
-    @apply bg-white/60 backdrop-blur-lg border border-white/30 shadow-glass-lg rounded-2xl;
-  }
-  
-  /* Aroma GC Badge System */
-  .badge-success {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-success-100 text-success-700 border border-success-200;
-  }
-  
-  .badge-warning {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-warning-100 text-warning-700 border border-warning-200;
-  }
-  
-  .badge-danger {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-danger-100 text-danger-700 border border-danger-200;
-  }
-  
-  .badge-info {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-info-100 text-info-700 border border-info-200;
-  }
-
-  .badge-neutral {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-neutral-100 text-neutral-700 border border-neutral-200;
-  }
-
-  /* Aroma GC Button System */
-  .btn-primary {
-    @apply px-4 py-2 bg-aroma-600 text-white rounded-xl hover:bg-aroma-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl;
-  }
-
-  .btn-secondary {
-    @apply px-4 py-2 bg-neutral-100 text-neutral-700 rounded-xl hover:bg-neutral-200 transition-all duration-200 font-medium;
-  }
-
-  .btn-success {
-    @apply px-4 py-2 bg-success-600 text-white rounded-xl hover:bg-success-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl;
-  }
-
-  .btn-warning {
-    @apply px-4 py-2 bg-warning-600 text-white rounded-xl hover:bg-warning-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl;
-  }
-
-  .btn-danger {
-    @apply px-4 py-2 bg-danger-600 text-white rounded-xl hover:bg-danger-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl;
-  }
-
-  /* Aroma GC Input System */
-  .input-primary {
-    @apply w-full px-4 py-3 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-aroma-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm;
-  }
-
-  .input-error {
-    @apply w-full px-4 py-3 border border-danger-300 rounded-xl focus:ring-2 focus:ring-danger-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm;
-  }
-
-  /* Timeline specific styles */
-  .timeline-line {
-    @apply absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-aroma-400 to-aroma-600;
-  }
-
+  /* Timeline Components */
   .timeline-node {
     @apply w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-4 border-white;
   }
 
   .timeline-node-primary {
-    @apply timeline-node bg-gradient-to-r from-aroma-500 to-aroma-600;
+    @apply timeline-node bg-gradient-to-r from-primary to-primary/80;
   }
 
   .timeline-node-success {
-    @apply timeline-node bg-gradient-to-r from-success-500 to-success-600;
+    @apply timeline-node bg-gradient-to-r from-green-500 to-green-600;
   }
 
   .timeline-node-warning {
-    @apply timeline-node bg-gradient-to-r from-warning-500 to-warning-600;
+    @apply timeline-node bg-gradient-to-r from-yellow-500 to-yellow-600;
   }
 
   .timeline-node-info {
-    @apply timeline-node bg-gradient-to-r from-info-500 to-info-600;
+    @apply timeline-node bg-gradient-to-r from-blue-500 to-blue-600;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

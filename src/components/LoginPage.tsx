@@ -93,10 +93,10 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         </div>
 
         {/* Login Form */}
-        <form className="bg-white p-8 rounded-2xl shadow-xl space-y-6" onSubmit={handleSubmit}>
+        <form className="modern-card p-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="username" className="block typography-subtext font-medium text-foreground mb-1">
                 Usuário
               </label>
               <div className="relative">
@@ -108,7 +108,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-coffee-600 focus:border-transparent transition-all duration-200"
+                  className="input-modern-lg pl-10"
                   placeholder="Digite seu usuário"
                   required
                 />
@@ -116,7 +116,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="password" className="block typography-subtext font-medium text-foreground mb-1">
                 Senha
               </label>
               <div className="relative">
@@ -128,7 +128,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-coffee-600 focus:border-transparent transition-all duration-200"
+                  className="input-modern-lg pl-10"
                   placeholder="Digite sua senha"
                   required
                 />
@@ -137,10 +137,10 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+            <div className="modern-card bg-destructive/10 border-destructive/20 p-4">
               <div className="flex items-center">
-                <AlertCircle className="h-5 w-5 text-red-600 mr-2" />
-                <span className="text-sm text-red-700">{error}</span>
+                <AlertCircle className="h-5 w-5 text-destructive mr-2" />
+                <span className="typography-subtext text-destructive">{error}</span>
               </div>
             </div>
           )}
@@ -148,7 +148,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-coffee-700 text-white py-3 px-4 rounded-xl font-semibold hover:bg-coffee-800 focus:outline-none focus:ring-2 focus:ring-coffee-600 focus:ring-offset-2 transition-all duration-200 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="btn-modern-primary w-full h-11"
           >
             {isLoading ? (
               <div className="flex items-center justify-center">
@@ -165,23 +165,23 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         </form>
 
         {/* Credentials Info */}
-        <div className="bg-white bg-opacity-90 border border-coffee-300 rounded-xl p-6 shadow-lg">
-          <h3 className="text-sm font-semibold text-coffee-900 mb-3">Credenciais de Teste:</h3>
-          <div className="space-y-2 text-sm">
-            <div className="bg-white p-3 rounded-lg">
-              <p className="font-medium text-coffee-800">Atendente de Suporte:</p>
-              <p className="text-coffee-700">Usuário: <span className="font-mono bg-coffee-200 px-2 py-1 rounded">atendente</span></p>
-              <p className="text-coffee-700">Senha: <span className="font-mono bg-coffee-200 px-2 py-1 rounded">suporte</span></p>
+        <div className="modern-card bg-card/90 p-6">
+          <h3 className="typography-subtext font-semibold text-foreground mb-3">Credenciais de Teste:</h3>
+          <div className="space-y-2">
+            <div className="modern-card bg-background p-3">
+              <p className="typography-subtext font-medium text-foreground">Atendente de Suporte:</p>
+              <p className="typography-stext text-muted-foreground">Usuário: <span className="badge-modern-outline font-mono">atendente</span></p>
+              <p className="typography-stext text-muted-foreground">Senha: <span className="badge-modern-outline font-mono">suporte</span></p>
             </div>
-            <div className="bg-white p-3 rounded-lg">
-              <p className="font-medium text-green-800">Colaborador:</p>
-              <p className="text-green-700">Usuário: <span className="font-mono bg-green-200 px-2 py-1 rounded">colaborador</span></p>
-              <p className="text-green-700">Senha: <span className="font-mono bg-green-200 px-2 py-1 rounded">senha123</span></p>
+            <div className="modern-card bg-background p-3">
+              <p className="typography-subtext font-medium text-foreground">Colaborador:</p>
+              <p className="typography-stext text-muted-foreground">Usuário: <span className="badge-modern-outline font-mono">colaborador</span></p>
+              <p className="typography-stext text-muted-foreground">Senha: <span className="badge-modern-outline font-mono">senha123</span></p>
             </div>
-            <div className="bg-white p-3 rounded-lg">
-              <p className="font-medium text-blue-800">Desenvolvedor:</p>
-              <p className="text-blue-700">Usuário: <span className="font-mono bg-blue-200 px-2 py-1 rounded">desenvolvedor</span></p>
-              <p className="text-blue-700">Senha: <span className="font-mono bg-blue-200 px-2 py-1 rounded">dev123</span></p>
+            <div className="modern-card bg-background p-3">
+              <p className="typography-subtext font-medium text-foreground">Desenvolvedor:</p>
+              <p className="typography-stext text-muted-foreground">Usuário: <span className="badge-modern-outline font-mono">desenvolvedor</span></p>
+              <p className="typography-stext text-muted-foreground">Senha: <span className="badge-modern-outline font-mono">dev123</span></p>
             </div>
           </div>
         </div>

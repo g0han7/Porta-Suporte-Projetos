@@ -204,11 +204,11 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
       {!showAttendancePage && !showKnowledgePage && (
         <>
       {/* Header */}
-      <header className="bg-white shadow-md border-b border-coffee-200">
+      <header className="modern-card shadow-md border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <div className="bg-white p-2 rounded-lg mr-3 shadow-sm">
+              <div className="modern-card p-2 mr-3 shadow-sm">
                 <img 
                   src="/image.png" 
                   alt="GranCoffee Logo" 
@@ -216,13 +216,13 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
                 />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-coffee-950">Painel de Atendimento</h1>
-                <p className="text-sm text-gray-600">Bem-vindo, {user.name}</p>
+                <h1 className="typography-title text-foreground">Painel de Atendimento</h1>
+                <p className="typography-subtext text-muted-foreground">Bem-vindo, {user.name}</p>
               </div>
             </div>
             <button
               onClick={onLogout}
-              className="flex items-center px-4 py-2 text-sm font-medium text-coffee-950 hover:bg-red-50 rounded-lg transition-colors duration-200"
+              className="btn-modern-ghost text-destructive hover:bg-destructive/10"
             >
               <LogOut className="h-4 w-4 mr-2" />
               Sair
@@ -235,13 +235,13 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Tabs */}
         <div className="mb-8">
-          <nav className="flex space-x-1 bg-white p-1 rounded-xl shadow-sm">
+          <nav className="flex space-x-1 modern-card p-1">
             <button
               onClick={() => setActiveTab('myIncidents')}
               className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                 activeTab === 'myIncidents'
-                  ? 'bg-[#51913B] text-white shadow-md'
-                  : 'text-gray-600 hover:text-coffee-950 hover:bg-gray-50'
+                  ? 'bg-primary text-primary-foreground shadow-md'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
               }`}
             >
               Meus Chamados
@@ -250,8 +250,8 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
               onClick={() => setActiveTab('queue')}
               className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                 activeTab === 'queue'
-                  ? 'bg-[#51913B] text-white shadow-md'
-                  : 'text-gray-600 hover:text-coffee-950 hover:bg-gray-50'
+                  ? 'bg-primary text-primary-foreground shadow-md'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
               }`}
             >
               Fila de Atendimento
@@ -260,8 +260,8 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
               onClick={() => setActiveTab('all')}
               className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                 activeTab === 'all'
-                  ? 'bg-[#51913B] text-white shadow-md'
-                  : 'text-gray-600 hover:text-coffee-950 hover:bg-gray-50'
+                  ? 'bg-primary text-primary-foreground shadow-md'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
               }`}
             >
               Todos os Chamados
@@ -270,8 +270,8 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
               onClick={() => setActiveTab('newIncident')}
               className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                 activeTab === 'newIncident'
-                  ? 'bg-[#51913B] text-white shadow-md'
-                  : 'text-gray-600 hover:text-coffee-950 hover:bg-gray-50'
+                  ? 'bg-primary text-primary-foreground shadow-md'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
               }`}
             >
               <Plus className="h-5 w-5 mr-2" />
@@ -281,8 +281,8 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
               onClick={() => setActiveTab('knowledge')}
               className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                 activeTab === 'knowledge'
-                  ? 'bg-[#51913B] text-white shadow-md'
-                  : 'text-gray-600 hover:text-coffee-950 hover:bg-gray-50'
+                  ? 'bg-primary text-primary-foreground shadow-md'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-accent'
               }`}
             >
               <BookOpen className="h-5 w-5 mr-2" />
@@ -293,14 +293,14 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
 
         {/* Filters */}
         {activeTab !== 'newIncident' && activeTab !== 'knowledge' && (
-          <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
+          <div className="modern-card p-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Status Filter */}
             <div>
               <select
                 value={filters.status}
                 onChange={(e) => setFilters({...filters, status: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#51913B] focus:border-transparent text-sm"
+                className="input-modern w-full"
               >
                 <option value="">Todos os Status</option>
                 <option value="Pendente">Pendente</option>
@@ -322,7 +322,7 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
               <select
                 value={filters.assignedTo}
                 onChange={(e) => setFilters({...filters, assignedTo: e.target.value})}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#51913B] focus:border-transparent text-sm"
+                className="input-modern w-full"
               >
                 <option value="">Todos os Responsáveis</option>
                 <option value="Lucas Matias Ferreira">Lucas Matias Ferreira</option>
@@ -342,7 +342,7 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
                 <select
                   value={filters.period}
                   onChange={(e) => setFilters({...filters, period: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#51913B] focus:border-transparent text-sm"
+                  className="input-modern w-full"
                 >
                   <option value="">Todos os Períodos</option>
                   <option value="Última Semana">Última Semana</option>
@@ -356,11 +356,11 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
           {/* Sort Controls */}
           <div className="flex items-center space-x-4 mt-4 pt-4 border-t">
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-600">Ordenar por:</span>
+              <span className="typography-subtext text-muted-foreground">Ordenar por:</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-3 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#51913B] focus:border-transparent text-sm"
+                className="input-modern"
               >
                 <option value="priority">Prioridade</option>
                 <option value="date">Data</option>
@@ -368,7 +368,7 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
             </div>
             <button
               onClick={toggleSortOrder}
-              className="flex items-center px-3 py-1 text-sm text-gray-600 hover:text-[#38261E] border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+              className="btn-modern-outline"
             >
               <ArrowUpDown className="h-4 w-4 mr-1" />
               {sortOrder === 'asc' ? 'Crescente' : 'Decrescente'}
@@ -381,22 +381,22 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
         {activeTab !== 'newIncident' && activeTab !== 'knowledge' && (
           <div className="space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-coffee-950">
+            <h2 className="typography-title text-foreground">
               {activeTab === 'myIncidents' && 'Meus Chamados'}
               {activeTab === 'queue' && 'Fila de Atendimento'}
               {activeTab === 'all' && 'Todos os Chamados'}
             </h2>
-            <div className="bg-white px-4 py-2 rounded-lg shadow-sm">
-              <span className="text-sm text-gray-600">Total: </span>
-              <span className="font-semibold text-[#51913B]">{tabIncidents.length}</span>
+            <div className="modern-card px-4 py-2">
+              <span className="typography-subtext text-muted-foreground">Total: </span>
+              <span className="font-semibold text-primary">{tabIncidents.length}</span>
             </div>
           </div>
 
           {tabIncidents.length === 0 ? (
             <div className="text-center py-12">
               <Search className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">Nenhum chamado encontrado</h3>
-              <p className="text-gray-600">Não há chamados que correspondam aos filtros aplicados.</p>
+              <h3 className="typography-xtext font-medium text-foreground mb-2">Nenhum chamado encontrado</h3>
+              <p className="typography-text text-muted-foreground">Não há chamados que correspondam aos filtros aplicados.</p>
             </div>
           ) : (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -418,11 +418,11 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
         {/* New Incident Form */}
         {(activeTab === 'newIncident') && (
           <div className="max-w-2xl mx-auto">
-            <div className="glass-effect rounded-2xl shadow-xl p-8 border border-white/30">
-              <h2 className="text-2xl font-bold text-coffee-950 mb-6">Abrir Novo Chamado</h2>
+            <div className="modern-card p-8">
+              <h2 className="typography-title text-foreground mb-6">Abrir Novo Chamado</h2>
               
               {showSuccess && (
-                <div className="mb-6 p-4 badge-success rounded-xl">
+                <div className="mb-6 p-4 modern-card bg-green-50 border-green-200">
                   <div className="flex items-center">
                     <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
                     <span className="text-green-800 font-medium">Chamado criado com sucesso!</span>
@@ -432,14 +432,14 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
 
               <form onSubmit={handleSubmitIncident} className="space-y-6" autoComplete="off">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block typography-subtext font-medium text-foreground mb-2">
                     Solicitado por *
                   </label>
                   <input
                     type="text"
                     value={requestedFor}
                     onChange={(e) => setRequestedFor(e.target.value)}
-                    className="input-primary"
+                    className="input-modern-lg w-full"
                     placeholder="Nome do colaborador que está solicitando"
                     required
                     autoComplete="off"
@@ -447,14 +447,14 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block typography-subtext font-medium text-foreground mb-2">
                     Descreva o Problema *
                   </label>
                   <textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     rows={4}
-                    className="input-primary"
+                    className="input-modern-lg w-full"
                     placeholder="Ex: Computador não está ligando, software X está travando, não consigo acessar a rede, etc."
                     required
                     autoComplete="off"
@@ -463,13 +463,13 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block typography-subtext font-medium text-foreground mb-2">
                       Tipo de Problema
                     </label>
                     <select
                       value={type}
                       onChange={(e) => setType(e.target.value)}
-                      className="input-primary"
+                      className="input-modern-lg w-full"
                     >
                       <option value="">Selecione o tipo</option>
                       <option value="Software">Software</option>
@@ -482,13 +482,13 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block typography-subtext font-medium text-foreground mb-2">
                       Impacto
                     </label>
                     <select
                       value={impact}
                       onChange={(e) => setImpact(e.target.value)}
-                      className="input-primary"
+                      className="input-modern-lg w-full"
                     >
                       <option value="">Selecione o impacto</option>
                       <option value="Baixo">Baixo</option>
@@ -499,13 +499,13 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block typography-subtext font-medium text-foreground mb-2">
                       Prioridade
                     </label>
                     <select
                       value={priority}
                       onChange={(e) => setPriority(e.target.value)}
-                      className="input-primary"
+                      className="input-modern-lg w-full"
                     >
                       <option value="">Selecione a prioridade</option>
                       <option value="Muito Baixa">Muito Baixa</option>
@@ -527,14 +527,14 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
                       setPriority('');
                       setRequestedFor('');
                     }}
-                    className="px-6 py-3 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+                    className="btn-modern-ghost"
                   >
                     Limpar
                   </button>
                   <button
                     type="submit"
                     disabled={isSubmitting || !description.trim() || !requestedFor.trim()}
-                    className="btn-primary px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-95"
+                    className="btn-modern-primary px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Criando...' : 'Abrir Chamado'}
                   </button>
@@ -548,11 +548,11 @@ const AttendantPortal: React.FC<AttendantPortalProps> = ({ user, onLogout }) => 
         {activeTab === 'knowledge' && (
           <div className="text-center py-12">
             <BookOpen className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Base de Conhecimento</h3>
-            <p className="text-gray-600 mb-6">Acesse nossa biblioteca completa de soluções e procedimentos.</p>
+            <h3 className="typography-xtext font-medium text-foreground mb-2">Base de Conhecimento</h3>
+            <p className="typography-text text-muted-foreground mb-6">Acesse nossa biblioteca completa de soluções e procedimentos.</p>
             <button
               onClick={handleShowKnowledge}
-              className="btn-primary px-6 py-3"
+              className="btn-modern-primary px-6 py-3"
             >
               Abrir Base de Conhecimento
             </button>

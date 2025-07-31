@@ -67,44 +67,44 @@ const IncidentCard: React.FC<IncidentCardProps> = ({
 
   return (
     <div 
-      className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer border border-gray-200 overflow-hidden"
+      className="modern-card cursor-pointer overflow-hidden hover:shadow-lg"
       onClick={handleCardClick}
     >
       <div className="p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-[#38261E] text-lg card-clickable">
+          <h3 className="typography-subtitle text-foreground card-clickable">
             {incident.incidentNumber}
           </h3>
-          <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(incident.status)}`}>
+          <span className={`badge-modern ${getStatusColor(incident.status)}`}>
             {incident.status}
           </span>
         </div>
 
         <div className="space-y-3 mb-4">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600">Prioridade:</span>
-            <span className={`px-2 py-1 rounded-full text-xs font-medium border ${getPriorityColor(incident.priority)}`}>
+            <span className="typography-subtext text-muted-foreground">Prioridade:</span>
+            <span className={`badge-modern ${getPriorityColor(incident.priority)}`}>
               {incident.priority}
             </span>
           </div>
 
-          <div className="flex items-center text-sm text-gray-600">
+          <div className="flex items-center typography-subtext text-muted-foreground">
             <User className="h-4 w-4 mr-1" />
             <span>{incident.requestedFor}</span>
           </div>
 
-          <div className="flex items-center text-sm text-gray-600">
+          <div className="flex items-center typography-subtext text-muted-foreground">
             <Clock className="h-4 w-4 mr-1" />
             <span>{new Date(incident.lastUpdated).toLocaleDateString('pt-BR')}</span>
           </div>
 
-          <div className="text-sm text-gray-600">
-            <span className="font-medium">Atribuído a:</span>
+          <div className="typography-subtext text-muted-foreground">
+            <span className="font-medium text-foreground">Atribuído a:</span>
             <span className="ml-1">{incident.assignedTo}</span>
           </div>
         </div>
 
-        <p className="text-sm text-gray-700 line-clamp-3 mb-4">
+        <p className="typography-subtext text-muted-foreground line-clamp-3 mb-4">
           {incident.description}
         </p>
 
@@ -116,7 +116,7 @@ const IncidentCard: React.FC<IncidentCardProps> = ({
                   e.stopPropagation();
                   onStartAttendance?.(incident.id);
                 }}
-                className="flex items-center px-4 py-2 bg-[#51913B] text-white rounded-lg hover:bg-[#457A32] transition-colors duration-200 text-sm font-medium"
+                className="btn-modern-primary"
               >
                 <Play className="h-4 w-4 mr-1" />
                 Começar Atendimento
@@ -127,7 +127,7 @@ const IncidentCard: React.FC<IncidentCardProps> = ({
                 e.stopPropagation();
                 onView?.(incident.id);
               }}
-              className="flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200 text-sm font-medium"
+              className="btn-modern-outline"
             >
               <Eye className="h-4 w-4 mr-1" />
               Visualizar

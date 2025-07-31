@@ -153,11 +153,11 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
       {!showAttendancePage && !showKnowledgePage && (
         <>
           {/* Header */}
-          <header className="bg-white shadow-md border-b border-coffee-200">
+          <header className="modern-card shadow-md border-b">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
-                  <div className="bg-white p-2 rounded-lg mr-3 shadow-sm">
+                  <div className="modern-card p-2 mr-3 shadow-sm">
                     <img 
                       src="/image.png" 
                       alt="GranCoffee Logo" 
@@ -165,13 +165,13 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
                     />
                   </div>
                   <div>
-                    <h1 className="text-xl font-bold text-coffee-950">Portal do Colaborador</h1>
-                    <p className="text-sm text-gray-600">Bem-vindo, {user.name}</p>
+                    <h1 className="typography-title text-foreground">Portal do Colaborador</h1>
+                    <p className="typography-subtext text-muted-foreground">Bem-vindo, {user.name}</p>
                   </div>
                 </div>
                 <button
                   onClick={onLogout}
-                  className="flex items-center px-4 py-2 text-sm font-medium text-coffee-950 hover:bg-red-50 rounded-lg transition-colors duration-200"
+                  className="btn-modern-ghost text-destructive hover:bg-destructive/10"
                 >
                   <LogOut className="h-4 w-4 mr-2" />
                   Sair
@@ -184,13 +184,13 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
           <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             {/* Tabs */}
             <div className="mb-8">
-              <nav className="flex space-x-1 bg-white p-1 rounded-xl shadow-sm">
+              <nav className="flex space-x-1 modern-card p-1">
                 <button
                   onClick={() => setActiveTab('myIncidents')}
                   className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                     activeTab === 'myIncidents'
-                      ? 'bg-[#51913B] text-white shadow-md'
-                      : 'text-gray-600 hover:text-coffee-950 hover:bg-gray-50'
+                      ? 'bg-primary text-primary-foreground shadow-md'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                   }`}
                 >
                   Meus Chamados
@@ -199,8 +199,8 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
                   onClick={() => setActiveTab('newIncident')}
                   className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                     activeTab === 'newIncident'
-                      ? 'bg-[#51913B] text-white shadow-md'
-                      : 'text-gray-600 hover:text-coffee-950 hover:bg-gray-50'
+                      ? 'bg-primary text-primary-foreground shadow-md'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                   }`}
                 >
                   <Plus className="h-5 w-5 mr-2" />
@@ -210,8 +210,8 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
                   onClick={() => setActiveTab('knowledge')}
                   className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                     activeTab === 'knowledge'
-                      ? 'bg-[#51913B] text-white shadow-md'
-                      : 'text-gray-600 hover:text-coffee-950 hover:bg-gray-50'
+                      ? 'bg-primary text-primary-foreground shadow-md'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent'
                   }`}
                 >
                   <BookOpen className="h-5 w-5 mr-2" />
@@ -222,14 +222,14 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
 
             {/* Filters */}
             {activeTab === 'myIncidents' && (
-              <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
+              <div className="modern-card p-6 mb-8">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {/* Status Filter */}
                   <div>
                     <select
                       value={filters.status}
                       onChange={(e) => setFilters({...filters, status: e.target.value})}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#51913B] focus:border-transparent text-sm"
+                      className="input-modern w-full"
                     >
                       <option value="">Todos os Status</option>
                       <option value="Pendente">Pendente</option>
@@ -246,7 +246,7 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
                     <select
                       value={filters.priority}
                       onChange={(e) => setFilters({...filters, priority: e.target.value})}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#51913B] focus:border-transparent text-sm"
+                      className="input-modern w-full"
                     >
                       <option value="">Todas as Prioridades</option>
                       <option value="Crítica">Crítica</option>
@@ -261,11 +261,11 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
                 {/* Sort Controls */}
                 <div className="flex items-center space-x-4 mt-4 pt-4 border-t">
                   <div className="flex items-center space-x-2">
-                    <span className="text-sm text-gray-600">Ordenar por:</span>
+                    <span className="typography-subtext text-muted-foreground">Ordenar por:</span>
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
-                      className="px-3 py-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#51913B] focus:border-transparent text-sm"
+                      className="input-modern"
                     >
                       <option value="priority">Prioridade</option>
                       <option value="date">Data</option>
@@ -273,7 +273,7 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
                   </div>
                   <button
                     onClick={toggleSortOrder}
-                    className="flex items-center px-3 py-1 text-sm text-gray-600 hover:text-[#38261E] border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                    className="btn-modern-outline"
                   >
                     <ArrowUpDown className="h-4 w-4 mr-1" />
                     {sortOrder === 'asc' ? 'Crescente' : 'Decrescente'}
@@ -286,18 +286,18 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
             {activeTab === 'myIncidents' && (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold text-coffee-950">Meus Chamados</h2>
-                  <div className="bg-white px-4 py-2 rounded-lg shadow-sm">
-                    <span className="text-sm text-gray-600">Total: </span>
-                    <span className="font-semibold text-[#51913B]">{myIncidents.length}</span>
+                  <h2 className="typography-title text-foreground">Meus Chamados</h2>
+                  <div className="modern-card px-4 py-2">
+                    <span className="typography-subtext text-muted-foreground">Total: </span>
+                    <span className="font-semibold text-primary">{myIncidents.length}</span>
                   </div>
                 </div>
 
                 {myIncidents.length === 0 ? (
                   <div className="text-center py-12">
                     <Search className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Nenhum chamado encontrado</h3>
-                    <p className="text-gray-600">Você ainda não possui chamados ou eles não correspondem aos filtros aplicados.</p>
+                    <h3 className="typography-xtext font-medium text-foreground mb-2">Nenhum chamado encontrado</h3>
+                    <p className="typography-text text-muted-foreground">Você ainda não possui chamados ou eles não correspondem aos filtros aplicados.</p>
                   </div>
                 ) : (
                   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -318,11 +318,11 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
             {/* New Incident Form */}
             {activeTab === 'newIncident' && (
               <div className="max-w-2xl mx-auto">
-                <div className="bg-white rounded-2xl shadow-xl p-8">
-                  <h2 className="text-2xl font-bold text-coffee-950 mb-6">Abrir Novo Chamado</h2>
+                <div className="modern-card p-8">
+                  <h2 className="typography-title text-foreground mb-6">Abrir Novo Chamado</h2>
                   
                   {showSuccess && (
-                    <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl">
+                    <div className="mb-6 p-4 modern-card bg-green-50 border-green-200">
                       <div className="flex items-center">
                         <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
                         <span className="text-green-800 font-medium">Chamado criado com sucesso!</span>
@@ -332,14 +332,14 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
 
                   <form onSubmit={handleSubmitIncident} className="space-y-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block typography-subtext font-medium text-foreground mb-2">
                         Descreva o Problema *
                       </label>
                       <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         rows={4}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#51913B] focus:border-transparent"
+                        className="input-modern-lg w-full"
                         placeholder="Ex: Computador não está ligando, software X está travando, não consigo acessar a rede, etc."
                         required
                       />
@@ -347,13 +347,13 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block typography-subtext font-medium text-foreground mb-2">
                           Tipo de Problema
                         </label>
                         <select
                           value={type}
                           onChange={(e) => setType(e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#51913B] focus:border-transparent"
+                          className="input-modern-lg w-full"
                         >
                           <option value="">Selecione o tipo</option>
                           <option value="Software">Software</option>
@@ -366,10 +366,10 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
                       </div>
                     </div>
 
-                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+                    <div className="modern-card bg-blue-50 border-blue-200 p-4">
                       <div className="flex items-center space-x-2">
                         <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                        <span className="text-sm text-blue-800 font-medium">
+                        <span className="typography-subtext text-blue-800 font-medium">
                           A prioridade e impacto serão definidos automaticamente pela IA com base na descrição do problema
                         </span>
                       </div>
@@ -382,14 +382,14 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
                           setDescription('');
                           setType('');
                         }}
-                        className="px-6 py-3 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+                        className="btn-modern-ghost"
                       >
                         Limpar
                       </button>
                       <button
                         type="submit"
                         disabled={isSubmitting || !description.trim()}
-                        className="px-8 py-3 bg-[#51913B] text-white rounded-xl font-semibold hover:bg-[#457A32] focus:outline-none focus:ring-2 focus:ring-[#51913B] focus:ring-offset-2 transition-all duration-200 transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="btn-modern-primary px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isSubmitting ? 'Criando...' : 'Abrir Chamado'}
                       </button>
@@ -403,11 +403,11 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
             {activeTab === 'knowledge' && (
               <div className="text-center py-12">
                 <BookOpen className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">Base de Conhecimento</h3>
-                <p className="text-gray-600 mb-6">Acesse nossa biblioteca completa de soluções e procedimentos.</p>
+                <h3 className="typography-xtext font-medium text-foreground mb-2">Base de Conhecimento</h3>
+                <p className="typography-text text-muted-foreground mb-6">Acesse nossa biblioteca completa de soluções e procedimentos.</p>
                 <button
                   onClick={handleShowKnowledge}
-                  className="px-6 py-3 bg-[#51913B] text-white rounded-xl font-semibold hover:bg-[#457A32] focus:outline-none focus:ring-2 focus:ring-[#51913B] focus:ring-offset-2 transition-all duration-200 transform active:scale-95"
+                  className="btn-modern-primary px-6 py-3"
                 >
                   Abrir Base de Conhecimento
                 </button>
