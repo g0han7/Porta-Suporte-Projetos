@@ -51,8 +51,7 @@
   }
 
   * {
-    @apply border;
-    border-color: hsl(var(--border));
+    border: none;
   }
 
   body {

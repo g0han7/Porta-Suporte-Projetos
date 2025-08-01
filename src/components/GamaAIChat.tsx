@@ -102,22 +102,22 @@ const GamaAIChat: React.FC<GamaAIChatProps> = ({ onClose, initialMessage }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="glass-card shadow-2xl max-w-2xl w-full max-h-[80vh] flex flex-col">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] flex flex-col">
         {/* Header */}
-        <div className="bg-gradient-to-r from-aroma-600 to-aroma-700 p-4 rounded-t-2xl">
+        <div className="bg-gradient-to-r from-green-600 to-green-700 p-4 rounded-t-2xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="bg-white bg-opacity-20 p-2 rounded-full">
                 <Bot className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-white font-semibold font-poppins">GAMA AI</h3>
-                <p className="text-aroma-100 text-sm">Assistente Inteligente</p>
+                <h3 className="text-white font-semibold">GAMA AI</h3>
+                <p className="text-green-100 text-sm">Assistente Inteligente</p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="text-white hover:text-neutral-200 transition-colors duration-200"
+              className="text-white hover:text-gray-200 transition-colors duration-200"
             >
               <X className="h-6 w-6" />
             </button>
@@ -134,13 +134,13 @@ const GamaAIChat: React.FC<GamaAIChatProps> = ({ onClose, initialMessage }) => {
               <div
                 className={`max-w-xs lg:max-w-md px-4 py-3 rounded-2xl ${
                   message.sender === 'user'
-                    ? 'bg-aroma-600 text-white shadow-lg'
-                    : 'glass-card text-neutral-800'
+                    ? 'bg-green-600 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-800'
                 }`}
               >
                 <div className="flex items-start space-x-2">
                   {message.sender === 'ai' && (
-                    <Bot className="h-5 w-5 mt-0.5 text-aroma-600" />
+                    <Bot className="h-5 w-5 mt-0.5 text-green-600" />
                   )}
                   {message.sender === 'user' && (
                     <User className="h-5 w-5 mt-0.5 text-white" />
@@ -148,7 +148,7 @@ const GamaAIChat: React.FC<GamaAIChatProps> = ({ onClose, initialMessage }) => {
                   <div className="flex-1">
                     <p className="whitespace-pre-wrap text-sm">{message.content}</p>
                     <p className={`text-xs mt-1 ${
-                      message.sender === 'user' ? 'text-aroma-100' : 'text-gray-500'
+                      message.sender === 'user' ? 'text-green-100' : 'text-gray-500'
                     }`}>
                       {message.timestamp.toLocaleTimeString([], { 
                         hour: '2-digit', 
@@ -163,13 +163,13 @@ const GamaAIChat: React.FC<GamaAIChatProps> = ({ onClose, initialMessage }) => {
           
           {isTyping && (
             <div className="flex justify-start">
-              <div className="glass-card text-neutral-800 max-w-xs lg:max-w-md px-4 py-3 rounded-2xl">
+              <div className="bg-gray-100 text-gray-800 max-w-xs lg:max-w-md px-4 py-3 rounded-2xl">
                 <div className="flex items-center space-x-2">
-                  <Bot className="h-5 w-5 text-aroma-600" />
+                  <Bot className="h-5 w-5 text-green-600" />
                   <div className="flex space-x-1">
-                    <div className="w-2 h-2 bg-neutral-400 rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-neutral-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                    <div className="w-2 h-2 bg-neutral-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                   </div>
                 </div>
               </div>
@@ -180,20 +180,20 @@ const GamaAIChat: React.FC<GamaAIChatProps> = ({ onClose, initialMessage }) => {
         </div>
 
         {/* Input */}
-        <div className="border-t border-neutral-200 p-4">
+        <div className="p-4">
           <div className="flex space-x-2">
             <textarea
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Digite sua mensagem..."
-              className="input-primary resize-none"
+              className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
               rows={2}
             />
             <button
               onClick={handleSendMessage}
               disabled={!inputMessage.trim()}
-              className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send className="h-5 w-5" />
             </button>

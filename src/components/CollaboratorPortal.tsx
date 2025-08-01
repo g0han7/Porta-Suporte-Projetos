@@ -153,11 +153,11 @@ const CollaboratorPortal: React.FC<CollaboratorPortalProps> = ({ user, onLogout 
       {!showAttendancePage && !showKnowledgePage && (
         <>
           {/* Header */}
-          <header className="modern-card shadow-md border-b">
+          <header className="bg-white shadow-md">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between h-16">
                 <div className="flex items-center">
-                  <div className="modern-card p-2 mr-3 shadow-sm">
+                  <div className="bg-white p-2 mr-3 rounded-lg shadow-sm">
                     <img 
                       src="/image.png" 
                       alt="GranCoffee Logo" 
